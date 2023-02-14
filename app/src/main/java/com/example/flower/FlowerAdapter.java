@@ -28,7 +28,7 @@ class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         mContext = parent.getContext();
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_main, parent, false);
+                .inflate(R.layout.first_main, parent, false);
         return new ViewHolder(view);
     }
 
@@ -58,8 +58,8 @@ class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
-            flowerImageView = (ImageView) itemView.findViewById(R.id.itemImageView);
+            nameTextView = (TextView) itemView.findViewById(R.id.textView);
+            flowerImageView = (ImageView) itemView.findViewById(R.id.Flow);
         }
     }
 }
