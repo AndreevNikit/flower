@@ -1,6 +1,8 @@
 package com.example.flower;
 
 import android.content.Context;
+import android.os.Debug;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
-import java.time.Instant;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.ViewHolder> {
     private final static String PHOTO_URL = "http://services.hanselandpetal.com/photos/";
     private List<Flower> mFlowers;
-    private Context mContext;
+    public Context mContext;
 
     FlowerAdapter(List<Flower> flowers) {
 
@@ -37,10 +40,9 @@ class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.ViewHolder> {
         Flower flower = mFlowers.get(position);
         holder.nameTextView.setText(flower.getName());
 
-        Picasso.with(mContext)
-                .load(PHOTO_URL + flower.getPhoto())
-                .resize(200, 150)
-                .into(holder.flowerImageView);
+        Picasso.get().load(PHOTO_URL + flower.getPhoto()).into(holder.flowerImageView);
+        System.err.println(PHOTO_URL + flower.getPhoto());
+
 
     }
 
@@ -58,8 +60,8 @@ class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            nameTextView = (TextView) itemView.findViewById(R.id.textView);
-            flowerImageView = (ImageView) itemView.findViewById(R.id.Flow);
+            nameTextView = (TextView) itemView.findViewById(R.id.nameTextView);
+            flowerImageView = (ImageView) itemView.findViewById(R.id.itemImageView);
         }
     }
 }
